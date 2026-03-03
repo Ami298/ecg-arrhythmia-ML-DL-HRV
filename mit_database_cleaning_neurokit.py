@@ -18,7 +18,7 @@ for file in os.listdir(input_folder):
         continue
 
     file_path = os.path.join(input_folder, file)
-    print(f"\n📂 Processing {file}...")
+    print(f"\n Processing {file}...")
 
     # Initialize placeholders
     quality_zhao = None
@@ -31,7 +31,7 @@ for file in os.listdir(input_folder):
 
         if "Lead_II" not in df.columns:
             error_note = "Lead_II column missing"
-            print(f"⚠ {file}: Lead_II column not found. Columns:", list(df.columns))
+            print(f" {file}: Lead_II column not found. Columns:", list(df.columns))
         else:
             # ---------- Take Lead II ----------
             ecg_raw = df["Lead_II"].dropna()
@@ -68,7 +68,7 @@ for file in os.listdir(input_folder):
 
                 clean_output_path = os.path.join(output_folder, f"{os.path.splitext(file)[0]}_Clean.csv")
                 clean_df.to_csv(clean_output_path, index=False)
-                print(f"✅ Clean ECG saved: {clean_output_path}")
+                print(f" Clean ECG saved: {clean_output_path}")
 
                 # ---------- VISUALIZATION: RAW vs CLEANED ----------
                 plt.figure(figsize=(12, 5))
@@ -84,7 +84,7 @@ for file in os.listdir(input_folder):
                 plt.savefig(plot_path)
                 plt.close()
 
-                print(f"📊 Visualization saved: {plot_path}")
+                print(f" Visualization saved: {plot_path}")
 
     except Exception as e:
         error_note += f" | File read/process error: {e}"
@@ -107,6 +107,6 @@ if all_results:
     final_df = pd.concat(all_results, ignore_index=True)
     out_path = os.path.join(output_folder, "ECG_HRV_FullLength.csv")
     final_df.to_csv(out_path, index=False)
-    print(f"\n✅ All HRV results saved to: {out_path}")
+    print(f"\n All HRV results saved to: {out_path}")
 else:
     print("\n⚠ No ECG files processed.")
