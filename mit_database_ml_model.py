@@ -78,7 +78,7 @@ def load_data_wfdb(data_path):
                         y_all.append(CLASS_MAP[sym])
 
         except Exception as e:
-            print(f"❌ Error with record {name}: {e}")
+            print(f" Error with record {name}: {e}")
 
     return np.array(X_all), np.array(y_all)
 
@@ -164,7 +164,7 @@ if __name__ == "__main__":
         X_train, y_train, X_test, y_test, "Decision Tree"
     )
 
-    # ================== CROSS VALIDATION (ADDED) ==================
+    # ================== CROSS VALIDATION ==================
     print("\n\n================= CROSS VALIDATION RESULTS =================")
     X_flat = X.reshape(len(X), -1)
 
